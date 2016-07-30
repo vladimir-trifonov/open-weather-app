@@ -1,3 +1,5 @@
 /node_modules
 /logs
 /web/public/jspm_packages
+/connectors/openweathermap/node_modules
+/connectors/openweathermap/logs
