@@ -48,6 +48,7 @@
       "css": "github:systemjs/plugin-css@^0.1.25"
     },
     "devDependencies": {
+      "clean-css": "npm:clean-css@^3.4.19",
       "typescript": "npm:typescript@^1.6.2"
     }
   }
