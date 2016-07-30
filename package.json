@@ -1,39 +1,54 @@
 {
-    "name": "OpenWeatherApp",
-    "description": "",
-    "version": "1.0.0",
-    "author": "Vladimir Trifonov",
-    "license": "",
-    "framework": "none",
-    "keywords": [
-        "appcelerator",
-        "arrow"
-    ],
-    "repository": {},
-    "private": true,
+  "name": "OpenWeatherApp",
+  "description": "",
+  "version": "1.0.0",
+  "author": "Vladimir Trifonov",
+  "license": "",
+  "framework": "none",
+  "keywords": [
+    "appcelerator",
+    "arrow"
+  ],
+  "repository": {},
+  "private": true,
+  "dependencies": {
+    "async": "^1.5.0",
+    "lodash": "^3.10.1",
+    "pkginfo": "^0.3.1"
+  },
+  "devDependencies": {
+    "arrow": "^*",
+    "grunt": "^0.4.5",
+    "grunt-appc-js": "^1.0.19",
+    "grunt-contrib-clean": "^0.7.0",
+    "grunt-mocha-istanbul": "^3.0.1",
+    "istanbul": "^0.4.1",
+    "jspm": "0.16.41",
+    "mocha": "^2.3.4",
+    "request": "^2.67.0",
+    "should": "^8.0.2"
+  },
+  "main": "app.js",
+  "healthCheck": true,
+  "scripts": {
+    "start": "appc run",
+    "test": "grunt",
+    "bundle": "jspm bundle app.js ./web/public/build.js --inject --minify",
+    "unbundle": "jspm unbundle"
+  },
+  "engines": {
+    "node": "0.12.7"
+  },
+  "jspm": {
+    "directories": {
+      "baseURL": "web/public"
+    },
     "dependencies": {
-        "async": "^1.5.0",
-        "lodash": "^3.10.1",
-        "pkginfo": "^0.3.1"
+      "bootstrap": "github:twbs/bootstrap@^3.3.7",
+      "css": "github:systemjs/plugin-css@^0.1.25"
     },
     "devDependencies": {
-        "grunt": "^0.4.5",
-        "grunt-appc-js": "^1.0.19",
-        "grunt-contrib-clean": "^0.7.0",
-        "grunt-mocha-istanbul": "^3.0.1",
-        "istanbul": "^0.4.1",
-        "mocha": "^2.3.4",
-        "should": "^8.0.2",
-        "arrow": "^*",
-        "request": "^2.67.0"
-    },
-    "main": "app.js",
-    "healthCheck": true,
-    "scripts": {
-        "start": "appc run",
-        "test": "grunt"
-    },
-    "engines": {
-        "node": "0.12.7"
+      "typescript": "npm:typescript@^1.6.2"
     }
+  }
 }
