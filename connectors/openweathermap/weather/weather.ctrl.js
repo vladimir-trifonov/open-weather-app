@@ -1,4 +1,4 @@
-var weatherService = require('.weather.service');
+var weatherService = require('./weather.service');
 
 var WeatherCtrl = function() {};
 
