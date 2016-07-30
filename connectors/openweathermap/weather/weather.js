@@ -1,5 +1,5 @@
 var util = require('util');
-var WeatherCtrl = require('../controllers/weather.ctrl');
+var WeatherCtrl = require('./weather.ctrl');
 
 var Weather = function(apiid, urls) {
 	WeatherCtrl.call(this);
