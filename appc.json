@@ -3,7 +3,8 @@
   "group": "arrow",
   "dependencies": {
     "connector/appc.arrowdb": "*",
-    "connector/appc.composite": "*"
+    "connector/appc.composite": "*",
+    "connector/com.connector.openweathermap": "^1.0.0"
   },
   "cloud": {
     "guid": "579c6b94e8e127fb1071a3c1",

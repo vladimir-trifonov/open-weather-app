@@ -3,3 +3,5 @@
 /web/public/jspm_packages
 /connectors/openweathermap/node_modules
 /connectors/openweathermap/logs
+/connectors/openweathermap/.vscode
+/.vscode
