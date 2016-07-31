@@ -8,7 +8,25 @@ var Arrow = require('arrow'),
 // TODO: Define a model that you can use when you run the connector locally for testing.
 server.addModel(Arrow.Model.extend('forecast', {
 	fields: {
-		"city": {type: Object},
+		"city": {
+			"id": {
+				type: Number
+			},
+			"name": {
+				type: String
+			},
+			"coord": {
+				lat: {
+					type: Number
+				},
+				lon: {
+					type: Number
+				}
+			},
+			"country": {
+				type: String
+			}
+		},
 		"list": {
 			type: Array
 		}

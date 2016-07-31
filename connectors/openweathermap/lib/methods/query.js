@@ -18,8 +18,8 @@ exports.query = function(Model, options, callback) {
 	var request = this.client.getByLocation(Model.name);
 
 	request(query.lat, query.lon)
-		.then(function(forecast) {
-			callback(null, Model.instance(forecast, true));
+		.then(function(data) {
+			callback(null, Model.instance(data, true));
 		})
 		.catch(callback);
 };
