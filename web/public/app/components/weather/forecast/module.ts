@@ -1,7 +1,7 @@
 import ForecastCtrl from './forecast.controller';
 
 export default class {
-	constructor(url, route) {
-		new ForecastCtrl(url, route);
+	constructor(key, url, route) {
+		new ForecastCtrl(key, url, route);
 	}
 }
