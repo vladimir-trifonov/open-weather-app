@@ -1,2 +1,2 @@
-System.register("app.js",[],function(a,b){"use strict";b&&b.id;return{setters:[],execute:function(){"bootstrap/css/bootstrap.css!"}}});
+System.register("app/main.ts",[],function(a,b){"use strict";var c;b&&b.id;return{setters:[],execute:function(){c=function(){function a(){console.log("1")}return a}(),a("default",c)}}}),System.register("app/app.ts",["app/main.ts"],function(a,b){"use strict";var c;b&&b.id;return{setters:[function(a){c=a}],execute:function(){new c.default}}});
 //# sourceMappingURL=build.js.map

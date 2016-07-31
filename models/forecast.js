@@ -3,7 +3,23 @@ var Arrow = require('arrow');
 var Forecast = Arrow.Model.extend('forecast', {
 	fields: {
 		"city": {
-			type: Object
+			"id": {
+				type: Number
+			},
+			"name": {
+				type: String
+			},
+			"coord": {
+				lat: {
+					type: Number
+				},
+				lon: {
+					type: Number
+				}
+			},
+			"country": {
+				type: String
+			}
 		},
 		"list": {
 			type: Array

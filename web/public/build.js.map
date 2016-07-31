@@ -1,1 +1,1 @@
-{"version":3,"sources":[],"names":[],"mappings":"","file":"build.js"}
+{"version":3,"sources":["app/main.ts","app/app.ts"],"names":["default_1","console","log","main_1","default"],"mappings":"4HACC,QAAAA,KACCC,QAAQC,IAAI,WAEbF,kBAAAA,qJCFGG,GAAIC","file":"build.js"}
