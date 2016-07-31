@@ -1,4 +1,4 @@
-var Weather = require('../../weather/weather.js');
+var Weather = require('../../weather');
 
 /**
  * Connects to your data store; this connection can later be used by your connector's methods.

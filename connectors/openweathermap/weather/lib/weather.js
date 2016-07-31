@@ -9,6 +9,7 @@ var Weather = function(appid, urls) {
 };
 
 util.inherits(Weather, WeatherCtrl);
+Weather.prototype.constructor = Weather;
 
 module.exports.create = function(appid, urls) {
 	return new Weather(appid, urls);
