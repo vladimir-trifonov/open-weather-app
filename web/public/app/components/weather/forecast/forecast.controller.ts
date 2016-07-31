@@ -6,6 +6,7 @@ import ForecastService from './forecast.service';
 import template from './forecast.template.html!text';
 import './forecast.css!';
 import moment from 'moment';
+import $ from 'jquery';
 
 export default class extends WeatherCtrl {
 	protected service: ForecastService;
@@ -26,7 +27,18 @@ export default class extends WeatherCtrl {
 					city: forecast.city,
 					forecast: helper.formatForecast(forecast.list)
 				});
+
+				this.initEvents(this.forecastSel, 'click', this.handleClickEvent);
 			});
+	}
+
+	private handleClickEvent(e) {
+		$(e.currentTarget).toggleClass('revealed');
+		if ($(e.currentTarget).hasClass('revealed')) {
+			$(e.currentTarget).css('height', '540px');
+		} else {
+			$(e.currentTarget).removeAttr('style');
+		}
 	}
 
 	private renderForecast(data) {

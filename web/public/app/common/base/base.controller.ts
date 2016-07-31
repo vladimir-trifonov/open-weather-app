@@ -8,28 +8,30 @@ export default class {
 
 	protected render(templatesInfo, data) {
 		let result = templatesInfo.reduce((resultTplInfo, currentTplInfo) => {
+			const rendered = $.templates(currentTplInfo.template).render(data);
+
 			if (!resultTplInfo) {
 				resultTplInfo = {
 					selector: currentTplInfo.selector,
-					template: $(`<div>${currentTplInfo.template}</div>`)
+					template: $(`<div>${rendered}</div>`)
 				};
 			} else {
 				if (currentTplInfo.selector) {
-					resultTplInfo.template.find(currentTplInfo.selector).append(currentTplInfo.template);
+					resultTplInfo.template.find(currentTplInfo.selector).append(rendered);
 				} else {
-					resultTplInfo.template.append(currentTplInfo.template);
+					resultTplInfo.template.append(rendered);
 				}
 			}
+
 			return resultTplInfo;
 		}, null);
 
 		result.template = (result.template.clone()).html();
-		this.renderTemplate(result, data);
+		this.renderTemplate(result);
 	}
 
-	private renderTemplate(templateInfo, data) {
-		let tpl = $.templates(templateInfo.template);
-		$('body').find(templateInfo.selector || this.viewSel).html(tpl.render(data));
+	private renderTemplate(templateInfo) {
+		$('body').find(templateInfo.selector || this.viewSel).html(templateInfo.template);
 	}
 
 	protected attachEvents(selectors, event, cb) {

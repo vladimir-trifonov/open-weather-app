@@ -1,7 +1,7 @@
 ///<reference path="typings/moment/moment.d.ts" />
 import moment from 'moment';
 
-export default {
+let forecastHelper = {
 	formatForecast: (forecast) => {
 		let formatted = forecast.reduce((result, current) => {
 			let date = moment(current.dt_txt, 'YYYY-MM-DD HH:mm:ss').format('YYYY-MM-DD');
@@ -19,33 +19,60 @@ export default {
 				result.byDate[date] = {
 					min: current.main.temp_min,
 					max: current.main.temp_max,
-					parts: []
+					parts: {}
 				}
 			} else {
 				result.byDate[date].min = Math.min(current.main.temp_min, result.byDate[date].min);
 				result.byDate[date].max = Math.max(current.main.temp_max, result.byDate[date].max);
 			}
 
-			result.byDate[date].parts.push(current);
+			let forecastPart = forecastHelper.formatForecastPart(current);
+			result.byDate[date].parts[forecastPart.hour] = forecastPart;
 
 			return result;
 		}, {
 			byDate: {}
 		});
 
-		let byDate = Object.keys(formatted.byDate).map((k) => {
-			return {
-				full_date: k,
-				date: moment(k, 'YYYY-MM-DD').format('dddd'),
-				stat: formatted.byDate[k]
-			}
-		}).sort((a, b) => {
-			return moment.utc(a.date, 'YYYY-MM-DD').diff(moment(b.date, 'YYYY-MM-DD'));
-		});
+		let byDate = forecastHelper.sortForecast(formatted);
 
 		return {
 			byDate,
 			temps: formatted.temps
 		}
+	},
+	formatForecastPart(part) {
+		return {
+			date: part.dt_txt,
+			hour: moment(part.dt_txt, 'YYYY-MM-DD HH:mm:ss').format('HH:mm'),
+			min: part.main.temp_min,
+			max: part.main.temp_max,
+			ico: ((part.weather && part.weather.length) ? `http://openweathermap.org/img/w/${part.weather[0].icon}` : null),
+			desc: ((part.weather && part.weather.length) ? part.weather[0].main : '')
+		}
+	},
+	sortForecast(formatted) {
+		return Object.keys(formatted.byDate).map((k) => {
+			let obj = {
+				full_date: k,
+				date: moment(k, 'YYYY-MM-DD').format('dddd'),
+				stat: formatted.byDate[k]
+			}
+
+			obj.stat.parts = forecastHelper.sortForecastParts(obj.stat.parts);
+
+			return obj;
+		}).sort((a, b) => {
+			return moment.utc(a.date, 'YYYY-MM-DD').diff(moment(b.date, 'YYYY-MM-DD'));
+		});
+	},
+	sortForecastParts(parts) {
+		return Object.keys(parts)
+			.map((k) => parts[k])
+			.sort((a, b) => {
+				return moment.utc(a.date, 'YYYY-MM-DD HH:mm:ss').diff(moment(b.date, 'YYYY-MM-DD HH:mm:ss'));
+			});
 	}
 }
+
+export default forecastHelper;
