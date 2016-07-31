@@ -1,28 +1,41 @@
 var rp = require('request-promise');
 
 module.exports = {
-	get: function(apiid, url) {
-		return function() {
+	get: function(appid, url) {
+		return function(city) {
 			return rp({
-				uri: url,
-				qs: {
-					apiid: apiid
-				},
-				json: true
-			});
+					uri: url,
+					qs: {
+						appid: appid,
+						q: city,
+						mode: 'json'
+					},
+					json: true
+				})
+				.then(handleResponse);
 		}
 	},
-	getByLocation: function(apiid, url) {
+	getByLocation: function(appid, url) {
 		return function(lat, lon) {
 			return rp({
-				uri: url,
-				qs: {
-					apiid: apiid,
-					lat: lat,
-					lon: lon
-				},
-				json: true
-			});
+					uri: url,
+					qs: {
+						appid: appid,
+						lat: lat,
+						lon: lon,
+						mode: 'json'
+					},
+					json: true
+				})
+				.then(handleResponse);
 		}
 	}
 };
+
+function handleResponse(response) {
+	if(!response || !response.cod || response.cod !== '200') {
+		throw new Error(response.message);
+	} else {
+		return response;
+	}
+}

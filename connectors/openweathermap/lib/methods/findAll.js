@@ -6,9 +6,9 @@
 exports.findAll = function getForecast(Model, callback) {
 	var request = this.client.get('forecast');
 
-	request()
+	request(this.config.city)
 		.then(function(forecast) {
-			callback(null, Model.connector.createInstance(Model, forecast));
+			callback(null, Model.instance(forecast, true));
 		})
 		.catch(callback);
 };

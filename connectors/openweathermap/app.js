@@ -8,36 +8,9 @@ var Arrow = require('arrow'),
 // TODO: Define a model that you can use when you run the connector locally for testing.
 server.addModel(Arrow.Model.extend('forecast', {
 	fields: {
-		"city": {
-			"id": {
-				type: Number
-			},
-			"name": {
-				type: String
-			},
-			"coord": {
-				"lon": {
-					type: Number
-				},
-				"lat": {
-					type: Number
-				}
-			},
-			"country": {
-				type: String
-			},
-			"cod": {
-				type: String
-			},
-			"message": {
-				type: Number
-			},
-			"cnt": {
-				type: Number
-			},
-			"list": {
-				type: Array
-			}
+		"city": {type: Object},
+		"list": {
+			type: Array
 		}
 	},
 	connector: 'com.connector.openweathermap'

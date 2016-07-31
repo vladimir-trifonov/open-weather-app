@@ -1,15 +1,15 @@
 var util = require('util');
 var WeatherCtrl = require('./weather.ctrl');
 
-var Weather = function(apiid, urls) {
+var Weather = function(appid, urls) {
 	WeatherCtrl.call(this);
 
-	this.apiid = apiid;
+	this.appid = appid;
 	this.urls = urls;
 };
 
 util.inherits(Weather, WeatherCtrl);
 
-module.exports.create = function(apiid, urls) {
-	return new Weather(apiid, urls);
+module.exports.create = function(appid, urls) {
+	return new Weather(appid, urls);
 };

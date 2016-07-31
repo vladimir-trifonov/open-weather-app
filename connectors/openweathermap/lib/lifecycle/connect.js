@@ -5,6 +5,6 @@ var Weather = require('../../weather/weather.js');
  * @param next
  */
 exports.connect = function (next) {
-	this.client = Weather.create(this.config.apiid, this.config.urls);
+	this.client = Weather.create(this.config.appid, this.config.urls);
 	next();
 };
