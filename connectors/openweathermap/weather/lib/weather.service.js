@@ -1,15 +1,19 @@
 var rp = require('request-promise');
+var util = require('util');
+var params = {
+	units: 'metric',
+	mode: 'json'
+}
 
 module.exports = {
 	get: function(appid, url) {
 		return function(city) {
 			return rp({
 					uri: url,
-					qs: {
+					qs: util._extend(params, {
 						appid: appid,
-						q: city,
-						mode: 'json'
-					},
+						q: city
+					}),
 					json: true
 				})
 				.then(handleResponse);
@@ -19,12 +23,11 @@ module.exports = {
 		return function(lat, lon) {
 			return rp({
 					uri: url,
-					qs: {
+					qs: util._extend(params, {
 						appid: appid,
 						lat: lat,
-						lon: lon,
-						mode: 'json'
-					},
+						lon: lon
+					}),
 					json: true
 				})
 				.then(handleResponse);
@@ -33,7 +36,7 @@ module.exports = {
 };
 
 function handleResponse(response) {
-	if(!response || !response.cod || response.cod !== '200') {
+	if (!response || !response.cod || response.cod !== '200') {
 		throw new Error(response.message);
 	} else {
 		return response;
