@@ -1,5 +1,7 @@
+import Forecast from './forecast/module';
+
 export default class {
-	constructor() {
-		console.log('Weather component loaded');
+	constructor(config) {
+		new Forecast(config.url, config.routes.forecast);
 	}
 }
