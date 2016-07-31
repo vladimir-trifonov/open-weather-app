@@ -1,8 +1,43 @@
 #outlook {
-  position: relative;
-  z-index: 99;
-  width: 100%;
-  background-color: #F8F8F8;
-  display: inline-block;
-  vertical-align: top;
+    position: relative;
+    z-index: 99;
+    width: 100%;
+    background-color: #F8F8F8;
+    display: inline-block;
+    vertical-align: top;
+}
+
+#location_strip .weather_field {
+    display: inline-block;
+    color: #FFF;
+    opacity: 0.99;
+    font-size: 16px;
+    height: 40px;
+    line-height: 42px;
+    padding: 0 10px;
+    position: relative;
+    cursor: pointer;
+}
+
+.weather_field:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.weather_field .selected {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+body.tablet .weather_field:hover {
+    -webkit-box-shadow: 0 0 0 rgba(0, 0, 0, 0), transparent 0 0 0;
+    -moz-box-shadow: 0 0 0 rgba(0, 0, 0, 0), transparent 0 0 0;
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0), transparent 0 0 0;
+}
+
+body.tablet .weather_field:active {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+#location_strip.editing #location_list .weather_field {
+    margin-right: 0;
+    padding-right: 25px;
 }

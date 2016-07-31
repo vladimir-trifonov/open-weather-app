@@ -1,16 +1,22 @@
 <div>
     <div id="location_strip">
-        <div id="current_location_entry" class="saved_forecast permanent">
-          <span class="forecast_name">
+        <div id="current_location_entry" class="weather_field permanent">
+          <span class="weather_name">
 	          Current Location:
 	        </span>
         </div>
         <div id="location_list">
-            <div class="saved_forecast">
-                <span class="forecast_name">{{:city.country}}</span>
+            <div class="weather_field" data-lat="{{:city.coord.lat}}" data-lon="{{:city.coord.lon}}">
+                <span class="weather_name">{{:city.name}}, {{:city.country}}</span>
             </div>
-            <div class="saved_forecast" data-lat="{{:city.coord.lat}}" data-lon="{{:city.coord.lon}}">
-                <span class="forecast_name">{{:city.name}}</span>
+            <div class="weather_field">
+                <span class="weather_name">{{:full_date}}</span>
+            </div>
+            <div class="weather_field">
+                <span class="weather_name">Min: {{:forecast.temps.min}} &#8451;</span>
+            </div>
+            <div class="weather_field">
+                <span class="weather_name">Max: {{:forecast.temps.max}} &#8451;</span>
             </div>
         </div>
     </div>

@@ -22,6 +22,7 @@ export default class extends WeatherCtrl {
 		this.service.getForecast()
 			.then((forecast) => {
 				this.renderForecast({
+					full_date: moment().format('dddd, MMM DD YYYY'),
 					city: forecast.city,
 					forecast: helper.formatForecast(forecast.list)
 				});
