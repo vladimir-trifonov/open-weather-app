@@ -29,7 +29,7 @@ export default class {
 
 	private renderTemplate(templateInfo, data) {
 		let tpl = $.templates(templateInfo.template);
-		$('body').find(templateInfo.selector || this.viewSel).append(tpl.render(data));
+		$('body').find(templateInfo.selector || this.viewSel).html(tpl.render(data));
 	}
 
 	protected attachEvents(selectors, event, cb) {
