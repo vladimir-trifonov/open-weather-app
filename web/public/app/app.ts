@@ -1,5 +1,8 @@
 import Weather from './components/weather/module';
+import './main.css!';
 
 System.import('jquery').then(function($) {
-	new Weather(window.__env.api);
+	$(function() {
+		new Weather(window.__env.api);
+	});
 });

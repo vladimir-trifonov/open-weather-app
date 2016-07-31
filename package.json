@@ -45,6 +45,7 @@
     },
     "dependencies": {
       "jsrender": "npm:jsrender@^0.9.80",
+      "moment": "npm:moment@^2.14.1",
       "text": "github:systemjs/plugin-text@^0.0.8"
     },
     "devDependencies": {

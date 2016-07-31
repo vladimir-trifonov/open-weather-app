@@ -1,7 +1,9 @@
 import BaseCtrl from '../../common/base/base.controller';
 import weatherTemplate from './weather.template.html!text';
+import './weather.css!';
 
 export default class extends BaseCtrl {
+	private weatherSel: string = '.view-weather';
 	constructor() {
 		super();
 	}
@@ -10,8 +12,12 @@ export default class extends BaseCtrl {
 		this.render([{
 			template: weatherTemplate
 		}, {
-			selector: '.view-weather',
+			selector: this.weatherSel,
 			template: template
 		}], data);
+	}
+
+	protected initEvents(selector, event, cb) {
+		this.attachEvents([this.weatherSel, selector], event, cb);
 	}
 }

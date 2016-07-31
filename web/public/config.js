@@ -28,6 +28,7 @@ System.config({
     "css": "github:systemjs/plugin-css@0.1.25",
     "jquery": "npm:jquery@3.1.0",
     "jsrender": "npm:jsrender@0.9.80",
+    "moment": "npm:moment@2.14.1",
     "text": "github:systemjs/plugin-text@0.0.8",
     "ts": "github:frankwallis/plugin-typescript@5.0.8",
     "typescript": "npm:typescript@1.8.10",

@@ -1,9 +1,15 @@
+///<reference path="typings/moment/moment.d.ts" />
+
+import helper from './forecast.helper';
 import WeatherCtrl from '../weather.controller';
 import ForecastService from './forecast.service';
 import template from './forecast.template.html!text';
+import './forecast.css!';
+import moment from 'moment';
 
 export default class extends WeatherCtrl {
 	protected service: ForecastService;
+	private forecastSel: string = '.day';
 	constructor(key, url, route) {
 		super();
 
@@ -15,7 +21,10 @@ export default class extends WeatherCtrl {
 	private init() {
 		this.service.getForecast()
 			.done((forecast) => {
-				this.renderForecast(forecast);
+				this.renderForecast({
+					city: forecast.city,
+					forecast: helper.formatForecast(forecast.list)
+				});
 			});
 	}
 

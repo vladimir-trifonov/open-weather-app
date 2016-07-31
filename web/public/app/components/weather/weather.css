@@ -1,0 +1,8 @@
+#outlook {
+  position: relative;
+  z-index: 99;
+  width: 100%;
+  background-color: #F8F8F8;
+  display: inline-block;
+  vertical-align: top;
+}

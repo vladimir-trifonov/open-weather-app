@@ -1,4 +1,20 @@
 <div>
-	{{:city.country}}
-	<div class="view-weather"></div>
+    <div id="location_strip">
+        <div id="current_location_entry" class="saved_forecast permanent">
+          <span class="forecast_name">
+	          Current Location:
+	        </span>
+        </div>
+        <div id="location_list">
+            <div class="saved_forecast">
+                <span class="forecast_name">{{:city.country}}</span>
+            </div>
+            <div class="saved_forecast" data-lat="{{:city.coord.lat}}" data-lon="{{:city.coord.lon}}">
+                <span class="forecast_name">{{:city.name}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="outlook">
+        <div class="view-weather"></div>
+    </div>
 </div>

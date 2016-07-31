@@ -3,6 +3,7 @@ import jsrender from 'jsrender';
 jsrender($);
 
 export default class {
+	private viewSel: string = '.view';
 	constructor() {}
 
 	protected render(templatesInfo, data) {
@@ -26,8 +27,12 @@ export default class {
 		this.renderTemplate(result, data);
 	}
 
-	protected renderTemplate(templateInfo, data) {
+	private renderTemplate(templateInfo, data) {
 		let tpl = $.templates(templateInfo.template);
-		$('body').find(templateInfo.selector || '.view').append(tpl.render(data));
+		$('body').find(templateInfo.selector || this.viewSel).append(tpl.render(data));
+	}
+
+	protected attachEvents(selectors, event, cb) {
+		$(selectors[0]).on(event, selectors[1], cb);
 	}
 }
