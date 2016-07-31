@@ -10,6 +10,9 @@ export default class extends BaseCtrl {
 
 	protected renderData(templateInfo, data) {
 		this.render([{
+			template: '<weather></weather>'
+		}, {
+			selector: this.weatherSel,
 			template: weatherTemplate
 		}, templateInfo], data);
 	}
