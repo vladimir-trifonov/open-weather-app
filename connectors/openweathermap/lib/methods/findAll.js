@@ -4,7 +4,7 @@
  * @param {Function} callback Callback passed an Error object (or null if successful) and the models.
  */
 exports.findAll = function getForecast(Model, callback) {
-	var request = this.client.get('forecast');
+	var request = this.client.get(Model.name);
 
 	request(this.config.city)
 		.then(function(forecast) {

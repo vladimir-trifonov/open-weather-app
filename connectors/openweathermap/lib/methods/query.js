@@ -15,7 +15,7 @@ exports.query = function(Model, options, callback) {
 		lon: options.where.lon
 	};
 
-	var request = this.client.getByLocation('forecast');
+	var request = this.client.getByLocation(Model.name);
 
 	request(query.lat, query.lon)
 		.then(function(forecast) {
