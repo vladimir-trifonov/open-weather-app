@@ -3,18 +3,15 @@ import weatherTemplate from './weather.template.html!text';
 import './weather.css!';
 
 export default class extends BaseCtrl {
-	private weatherSel: string = '.view-weather';
+	private weatherSel: string = 'weather';
 	constructor() {
 		super();
 	}
 
-	protected renderData(template, data) {
+	protected renderData(templateInfo, data) {
 		this.render([{
 			template: weatherTemplate
-		}, {
-			selector: this.weatherSel,
-			template: template
-		}], data);
+		}, templateInfo], data);
 	}
 
 	protected initEvents(selector, event, cb) {

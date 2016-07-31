@@ -10,7 +10,7 @@ import $ from 'jquery';
 
 export default class extends WeatherCtrl {
 	protected service: ForecastService;
-	private forecastSel: string = '.day';
+	private forecastSel: string = 'forecast';
 	constructor(key, url, route) {
 		super();
 
@@ -28,20 +28,24 @@ export default class extends WeatherCtrl {
 					forecast: helper.formatForecast(forecast.list)
 				});
 
-				this.initEvents(this.forecastSel, 'click', this.handleClickEvent);
+				this.initEvents('.day', 'click', this.handleClickEvent);
 			});
 	}
 
 	private handleClickEvent(e) {
-		$(e.currentTarget).toggleClass('revealed');
-		if ($(e.currentTarget).hasClass('revealed')) {
-			$(e.currentTarget).css('height', '540px');
+		let $el = $(e.currentTarget);
+		$el.toggleClass('revealed');
+		if ($el.hasClass('revealed')) {
+			$el.css('height', `${($el.data('cnt') + 1) * 60}px`);
 		} else {
-			$(e.currentTarget).removeAttr('style');
+			$el.removeAttr('style');
 		}
 	}
 
 	private renderForecast(data) {
-		this.renderData(template, data);
+		this.renderData({
+			selector: this.forecastSel,
+			template: template
+		}, data);
 	}
 }

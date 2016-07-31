@@ -47,7 +47,7 @@ let forecastHelper = {
 			hour: moment(part.dt_txt, 'YYYY-MM-DD HH:mm:ss').format('HH:mm'),
 			avg: (Math.round(((part.main.temp_min + part.main.temp_max)/2) * 100) / 100).toFixed(2),
 			ico: ((part.weather && part.weather.length) ? `http://openweathermap.org/img/w/${part.weather[0].icon}` : null),
-			desc: ((part.weather && part.weather.length) ? part.weather[0].main : '')
+			desc: ((part.weather && part.weather.length) ? `${part.weather[0].main} (${part.weather[0].description})` : '')
 		}
 	},
 	sortForecast(formatted) {
@@ -59,6 +59,7 @@ let forecastHelper = {
 			}
 
 			obj.stat.parts = forecastHelper.sortForecastParts(obj.stat.parts);
+			obj.stat.cnt = obj.stat.parts.length;
 
 			return obj;
 		}).sort((a, b) => {
