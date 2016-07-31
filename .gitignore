@@ -5,3 +5,4 @@
 /connectors/openweathermap/logs
 /connectors/openweathermap/.vscode
 /.vscode
+/connectors/openweathermap/conf/local.js
