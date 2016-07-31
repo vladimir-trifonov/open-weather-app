@@ -31,7 +31,6 @@
     -o-transition: -webkit-transform 0.15s ease-in;
     transition: -webkit-transform 0.15s ease-in;
     background-color: #F8F8F8;
-    font-family: "AvenirNextCondensed-Medium", "AvenirNextLTW01-MediumC 721311", "Arial Narrow", Verdana, sans-serif;
 }
 
 .panel:hover {

@@ -1,7 +1,13 @@
+@font-face {
+  font-family: "AvenirNextLT";
+  src: url("/app/common/fonts/avenir/avenir-next-lt.woff") format("woff");
+}
+
 .view {
     width: 852px;
     margin: 0 auto;
     vertical-align: top;
+    font-family: "AvenirNextLT";
 }
 
 .loader-wrap {
