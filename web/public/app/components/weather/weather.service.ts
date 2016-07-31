@@ -1,4 +1,6 @@
+import $ from 'jquery';
 import BaseService from '../../common/base/base.service';
+import utils from '../../common/utils/location';
 
 export default class extends BaseService {
 	protected url: string;
@@ -11,11 +13,25 @@ export default class extends BaseService {
 	}
 
 	protected getData(route): IPromise < any > {
-			return this.get({
-						url: `${this.url}${route}`,
-						beforeSend: (xhr) => {
-								xhr.setRequestHeader('Authorization', `Basic ${btoa(`${this.key}:`)}`);
-				}
-			});
+		var d = $.Deferred();
+
+		utils.getLocation((position) => {
+			let url = `${this.url}${route}`;
+
+			if (position) {
+				url += `/query?where={"lat":${position.coords.latitude},"lon":${position.coords.longitude}}`;
+			}
+
+			this.get({
+				url,
+				beforeSend: (xhr) => {
+						xhr.setRequestHeader('Authorization', `Basic ${btoa(`${this.key}:`)}`);
+					}
+			})
+			.done(d.resolve)
+			.fail(d.reject);
+		});
+
+		return d.promise();
 	}
 }
