@@ -10,10 +10,10 @@ module.exports = {
 		return function(city) {
 			return rp({
 					uri: url,
-					qs: util._extend(params, {
+					qs: util._extend({
 						appid: appid,
 						q: city
-					}),
+					}, params),
 					json: true
 				})
 				.then(handleResponse);
@@ -23,11 +23,11 @@ module.exports = {
 		return function(lat, lon) {
 			return rp({
 					uri: url,
-					qs: util._extend(params, {
+					qs: util._extend({
 						appid: appid,
 						lat: lat,
 						lon: lon
-					}),
+					}, params),
 					json: true
 				})
 				.then(handleResponse);
