@@ -45,8 +45,7 @@ let forecastHelper = {
 		return {
 			date: part.dt_txt,
 			hour: moment(part.dt_txt, 'YYYY-MM-DD HH:mm:ss').format('HH:mm'),
-			min: part.main.temp_min,
-			max: part.main.temp_max,
+			avg: (Math.round(((part.main.temp_min + part.main.temp_max)/2) * 100) / 100).toFixed(2),
 			ico: ((part.weather && part.weather.length) ? `http://openweathermap.org/img/w/${part.weather[0].icon}` : null),
 			desc: ((part.weather && part.weather.length) ? part.weather[0].main : '')
 		}
