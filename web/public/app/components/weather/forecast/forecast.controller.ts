@@ -20,7 +20,7 @@ export default class extends WeatherCtrl {
 
 	private init() {
 		this.service.getForecast()
-			.done((forecast) => {
+			.then((forecast) => {
 				this.renderForecast({
 					city: forecast.city,
 					forecast: helper.formatForecast(forecast.list)

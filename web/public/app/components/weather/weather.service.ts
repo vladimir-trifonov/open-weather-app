@@ -13,25 +13,23 @@ export default class extends BaseService {
 	}
 
 	protected getData(route): IPromise < any > {
-		var d = $.Deferred();
+		return new Promise((resolve, reject) => {
+			utils.getLocation((position) => {
+				let url = `${this.url}${route}`;
 
-		utils.getLocation((position) => {
-			let url = `${this.url}${route}`;
+				if (position) {
+					url += `/query?where={"lat":${position.coords.latitude},"lon":${position.coords.longitude}}`;
+				}
 
-			if (position) {
-				url += `/query?where={"lat":${position.coords.latitude},"lon":${position.coords.longitude}}`;
-			}
-
-			this.get({
-				url,
-				beforeSend: (xhr) => {
-						xhr.setRequestHeader('Authorization', `Basic ${btoa(`${this.key}:`)}`);
-					}
-			})
-			.done(d.resolve)
-			.fail(d.reject);
+				this.get({
+					url,
+					beforeSend: (xhr) => {
+							xhr.setRequestHeader('Authorization', `Basic ${btoa(`${this.key}:`)}`);
+						}
+				})
+				.done(resolve)
+				.fail(reject);
+			});
 		});
-
-		return d.promise();
 	}
 }
