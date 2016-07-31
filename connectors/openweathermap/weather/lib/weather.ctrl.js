@@ -5,26 +5,38 @@ var WeatherCtrl = function() {};
 
 WeatherCtrl.prototype.get = function(type) {
 	return function(city) {
-		if(!this.urls[type]) {
-			return promise.reject('Missing route for model: ' + type);
-		}
+		return this._isConfigValid(type)
+			.then(function() {
+				var request = weatherService.get(this.appid, this.urls[type]);
 
-		var request = weatherService.get(this.appid, this.urls[type]);
-
-		return request(city);
+				return request(city);
+			}.bind(this));
 	}.bind(this);
 }
 
 WeatherCtrl.prototype.getByLocation = function(type) {
 	return function(lat, lon) {
-		if(!this.urls[type]) {
-			return promise.reject('Missing route for model: ' + type);
+		return this._isConfigValid(type)
+			.then(function() {
+				var request = weatherService.getByLocation(this.appid, this.urls[type]);
+
+				return request(lat, lon);
+			}.bind(this));
+	}.bind(this);
+}
+
+WeatherCtrl.prototype._isConfigValid = function(type) {
+	return new Promise(function(resolve, reject) {
+		if (!this.urls[type]) {
+			return reject('Missing route for model: ' + type);
 		}
 
-		var request = weatherService.getByLocation(this.appid, this.urls[type]);
+		if (!this.appid) {
+			return reject('Missing config param: appid');
+		}
 
-		return request(lat, lon);
-	}.bind(this);
+		resolve();
+	}.bind(this));
 }
 
 module.exports = WeatherCtrl;

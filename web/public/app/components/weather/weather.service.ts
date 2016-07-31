@@ -3,4 +3,8 @@ export default class {
 	constructor(url) {
 		this.url = url;
 	}
+
+	protected getData(route) {
+
+	}
 }
