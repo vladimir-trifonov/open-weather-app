@@ -30,11 +30,19 @@
 
 `./npm run unbundle`
 
+#### Set arrow in development mode
+
+`To enable in development, set enableAdminInProduction to false in your config`
+
 ## Production
 
 #### Bundle front-end deps
 
 `./npm run bundle`
+
+#### Set arrow in production mode
+
+`To enable in production, set enableAdminInProduction in your config`
 
 ## Configs
 
