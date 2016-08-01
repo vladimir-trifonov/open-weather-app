@@ -20,18 +20,22 @@ export default class extends WeatherCtrl {
 	}
 
 	private init() {
+		// Get the forecast data
 		this.service.getForecast()
 			.then((forecast) => {
+				// Render the forecast data - calls renderData method in Weather component controller
 				this.renderForecast({
 					full_date: moment().format('dddd, MMM DD YYYY'),
 					city: forecast.city,
 					forecast: helper.formatForecast(forecast.list)
 				});
 
+				// Init forecast component listeners
 				this.initEvents('.day', 'click', this.handleClickEvent);
 			});
 	}
 
+	// Toggle display day forecast details info
 	private handleClickEvent(e) {
 		let $el = $(e.currentTarget);
 		$el.toggleClass('revealed');

@@ -8,15 +8,19 @@ export default class extends BaseService {
 	constructor(key, url) {
 		super();
 
+		// Config
 		this.url = url;
 		this.key = key;
 	}
 
+	// Get weather data
 	protected getData(route): IPromise < any > {
 		return new Promise((resolve, reject) => {
+			// Try to get user's location
 			utils.getLocation((position) => {
 				let url = `${this.url}${route}`;
 
+				// If the location is present search by it
 				if (position) {
 					url += `/query?where={"lat":${position.coords.latitude},"lon":${position.coords.longitude}}`;
 				}
@@ -24,6 +28,7 @@ export default class extends BaseService {
 				this.get({
 					url,
 					beforeSend: (xhr) => {
+							// Basic auth
 							xhr.setRequestHeader('Authorization', `Basic ${btoa(`${this.key}:`)}`);
 						}
 				})

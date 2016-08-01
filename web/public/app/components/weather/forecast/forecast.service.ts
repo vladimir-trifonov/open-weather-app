@@ -9,6 +9,7 @@ export default class extends WeatherService {
 		this.route = route;
 	}
 
+	// Get forecast - calls getData method in Weather component controller
 	public getForecast(): any {
 		return this.getData(this.route)
 			.then((data) => {

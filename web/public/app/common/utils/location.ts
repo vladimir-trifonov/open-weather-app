@@ -1,7 +1,9 @@
+// Ask get user's location
 export default {
 	getLocation: (cb) => {
 		if (navigator.geolocation) {
 			new Promise((resolve, reject) => {
+				// Fix no firing event in firefox when choosing - 'Not now'
 				let t = window.setTimeout(() => {
 					reject(null)
 				}, 8000);

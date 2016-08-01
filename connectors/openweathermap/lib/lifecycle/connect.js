@@ -5,6 +5,7 @@ var Weather = require('../../weather');
  * @param next
  */
 exports.connect = function (next) {
+	// Init weather component
 	this.client = Weather.create(this.config.appid, this.config.urls);
 	next();
 };

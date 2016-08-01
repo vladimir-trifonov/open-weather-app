@@ -8,6 +8,7 @@ export default class extends BaseCtrl {
 		super();
 	}
 
+	// Render Weather component in the browser
 	protected renderData(templateInfo, data) {
 		this.render([{
 			template: '<weather></weather>'
@@ -17,6 +18,7 @@ export default class extends BaseCtrl {
 		}, templateInfo], data);
 	}
 
+	// Init Weather component events listeners
 	protected initEvents(selector, event, cb) {
 		this.attachEvents([this.weatherSel, selector], event, cb);
 	}
