@@ -9,6 +9,36 @@ System.config({
     "github:*": "jspm_packages/github/*",
     "npm:*": "jspm_packages/npm/*"
   },
+  bundles: {
+    "build.js": [
+      "app/app.ts",
+      "app/common/styles/main.css!github:systemjs/plugin-css@0.1.25.js",
+      "app/components/weather/module.ts",
+      "app/components/weather/forecast/module.ts",
+      "app/components/weather/forecast/forecast.controller.ts",
+      "npm:jquery@3.1.0.js",
+      "npm:jquery@3.1.0/dist/jquery.js",
+      "github:jspm/nodelibs-process@0.1.2.js",
+      "github:jspm/nodelibs-process@0.1.2/index.js",
+      "npm:process@0.11.6.js",
+      "npm:process@0.11.6/browser.js",
+      "npm:moment@2.14.1.js",
+      "npm:moment@2.14.1/moment.js",
+      "app/components/weather/forecast/forecast.css!github:systemjs/plugin-css@0.1.25.js",
+      "app/components/weather/forecast/forecast.template.html!github:systemjs/plugin-text@0.0.8.js",
+      "app/components/weather/forecast/forecast.service.ts",
+      "app/components/weather/weather.service.ts",
+      "app/common/utils/location.ts",
+      "app/common/base/base.service.ts",
+      "app/components/weather/weather.controller.ts",
+      "app/components/weather/weather.css!github:systemjs/plugin-css@0.1.25.js",
+      "app/components/weather/weather.template.html!github:systemjs/plugin-text@0.0.8.js",
+      "app/common/base/base.controller.ts",
+      "npm:jsrender@0.9.80.js",
+      "npm:jsrender@0.9.80/jsrender.js",
+      "app/components/weather/forecast/forecast.helper.ts"
+    ]
+  },
 
   packages: {
     "app": {
