@@ -24,7 +24,7 @@
 
 `./OPEN_WEATHER_MAP_API_ID=b0312cb9e45632741c47202dbf139ee8 appc run`
 
-Navigate to 127.0.0.1:8080/
+Navigate to [127.0.0.1:8080/](127.0.0.1:8080/)
 
 ## Developing
 
